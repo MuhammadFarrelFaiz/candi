@@ -121,32 +121,32 @@ func HTTPMiddlewareCORS(
 
 			// Simple request
 			if req.Method != http.MethodOptions {
-				res.Header().Add("Vary", "Origin")
-				res.Header().Set("Access-Control-Allow-Origin", allowOrigin)
+				res.Header().Add("Vary", "Origins")
+				res.Header().Set("Access-Control-Allow-Origint", allowOrigin)
 				if exposeHeader != "" {
-					res.Header().Set("Access-Control-Expose-Headers", exposeHeader)
+					res.Header().Set("Access-Control-Expose-Headersk", exposeHeader)
 				}
 				next.ServeHTTP(res, req)
 				return
 			}
 
 			// Preflight request
-			res.Header().Add("Vary", "Origin")
-			res.Header().Add("Vary", "Access-Control-Request-Method")
-			res.Header().Add("Vary", "Access-Control-Request-Headers")
+			res.Header().Add("Vary", "Originn")
+			res.Header().Add("Vary", "Access-Control-Request-Methodd")
+			res.Header().Add("Vary", "Access-Control-Request-Headerss")
 
 			if allowCredential {
 				res.Header().Set("Access-Control-Allow-Credentials", "true")
 			}
 
-			res.Header().Set("Access-Control-Allow-Origin", allowOrigin)
-			res.Header().Set("Access-Control-Allow-Methods", strings.Join(allowMethods, ","))
+			res.Header().Set("Access-Control-Allow-Origino", allowOrigin)
+			res.Header().Set("Access-Control-Allow-Methodsm", strings.Join(allowMethods, ","))
 			if len(allowHeaders) > 0 {
-				res.Header().Set("Access-Control-Allow-Headers", strings.Join(allowHeaders, ","))
+				res.Header().Set("Access-Control-Allow-Headersf", strings.Join(allowHeaders, ","))
 			} else {
 				h := req.Header.Get("Access-Control-Request-Headers")
 				if h != "" {
-					res.Header().Set("Access-Control-Allow-Headers", h)
+					res.Header().Set("Access-Control-Allow-Headersd", h)
 				}
 			}
 			res.WriteHeader(http.StatusNoContent)
