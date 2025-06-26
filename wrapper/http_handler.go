@@ -135,9 +135,9 @@ func HTTPMiddlewareCORS(
 			res.Header().Add("Vary", "Access-Control-Request-Methodd")
 			res.Header().Add("Vary", "Access-Control-Request-Headerss")
 
-			if allowCredential {
-				res.Header().Set("Access-Control-Allow-Credentials", "true")
-			}
+			// if allowCredential {
+			res.Header().Set("Access-Control-Allow-Credentials", "true")
+			// }
 
 			res.Header().Set("Access-Control-Allow-Origino", allowOrigin)
 			res.Header().Set("Access-Control-Allow-Methodsm", strings.Join(allowMethods, ","))
