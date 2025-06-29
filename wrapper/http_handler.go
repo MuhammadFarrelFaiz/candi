@@ -119,10 +119,12 @@ func HTTPMiddlewareCORS(
 				}
 			}
 
+			fmt.Println(allowOrigin)
+
 			// Simple request
 			if req.Method != http.MethodOptions {
 				res.Header().Add("Vary", "Origins")
-				res.Header().Set("Access-Control-Allow-Origin", allowOrigin)
+				res.Header().Set("Access-Control-Allow-Origin", "https://stg-portalvaliant.pln.co.id")
 				if exposeHeader != "" {
 					res.Header().Set("Access-Control-Expose-Headers", exposeHeader)
 				}
